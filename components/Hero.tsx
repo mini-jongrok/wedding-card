@@ -10,7 +10,7 @@ export default function Hero() {
       */}
             <div className="absolute inset-0">
                 <Image
-                    src="https://picsum.photos/id/42/1920/1080" // 예시 이미지
+                    src="/main_photo.jpg" // 예시 이미지
                     alt="메인 웨딩 사진"
                     fill
                     className="object-cover"
@@ -24,13 +24,13 @@ export default function Hero() {
             <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
                 <p className="mb-4 text-lg tracking-[0.2em] uppercase">저희 결혼합니다</p>
                 <h1 className="mb-6 text-5xl font-bold font-serif">
-                    김철수 & 이영희
+                    서상민 & 백종록
                 </h1>
                 <p className="text-xl font-light">
-                    2025년 10월 25일 토요일 오후 12시
+                    2026년 4월 5일 토요일 오전 11시 30분
                 </p>
                 <p className="mt-2 text-sm opacity-80">
-                    서울 그랜드 웨딩홀
+                    서울 라비두스
                 </p>
 
                 {/* 스크롤 유도 화살표 */}

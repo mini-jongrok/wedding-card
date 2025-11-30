@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import Gallery from "@/components/Gallery";
 import Map from "@/components/Map";
+import Account from "@/components/Account";
 
 export default function Home() {
     return (
@@ -11,7 +12,10 @@ export default function Home() {
             {/* 2. Gallery Section (Horizontal Scroll) */}
             <Gallery />
 
-            {/* 3. Map Section (Location Info) */}
+            {/* 3. Account Section (Bank Info) */}
+            <Account />
+
+            {/* 4. Map Section (Location Info) */}
             <Map />
         </main>
     );
