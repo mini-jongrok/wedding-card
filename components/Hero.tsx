@@ -1,33 +1,34 @@
 import Image from "next/image";
+import mainPhoto from "@/app/assets/main_photo.jpg";
 
 export default function Hero() {
     return (
         <section className="relative h-screen w-full overflow-hidden">
             {/* 
         배경 이미지 설정
-        - '/hero-bg.jpg' 부분을 실제 이미지 경로(public 폴더 기준)로 변경하세요.
-        - 또는 아래처럼 외부 URL을 사용할 수도 있습니다.
+        - Static Import를 사용하여 빌드 타임에 이미지를 최적화하고 Blur Placeholder를 생성합니다.
       */}
             <div className="absolute inset-0">
                 <Image
-                    src="/main_photo.jpg" // 예시 이미지
+                    src={mainPhoto}
                     alt="메인 웨딩 사진"
                     fill
-                    className="object-cover"
+                    className="object-cover object-[50%_75%]"
                     priority
+                    placeholder="blur"
                 />
-                {/* 텍스트 가독성을 위한 어두운 오버레이 */}
-                <div className="absolute inset-0 bg-black/30" />
+                {/* 텍스트 가독성을 위한 어두운 오버레이 (그라데이션) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
             </div>
 
             {/* 텍스트 내용 */}
-            <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
+            <div className="relative z-10 flex h-full flex-col items-center justify-end pb-40 text-center text-white">
                 <p className="mb-4 text-lg tracking-[0.2em] uppercase">저희 결혼합니다</p>
                 <h1 className="mb-6 text-5xl font-bold font-serif">
                     서상민 & 백종록
                 </h1>
                 <p className="text-xl font-light">
-                    2026년 4월 5일 토요일 오전 11시 30분
+                    2026년 4월 5일 일요일 오전 11시 30분
                 </p>
                 <p className="mt-2 text-sm opacity-80">
                     서울 라비두스

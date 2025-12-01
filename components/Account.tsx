@@ -20,17 +20,17 @@ export default function Account() {
                             </summary>
                             <div className="p-4 border-t border-gray-100 text-left space-y-3 bg-gray-50">
                                 <div>
-                                    <p className="text-xs text-gray-500">신랑 아버지</p>
+                                    <p className="text-xs text-gray-600 font-medium">신랑 아버지</p>
                                     <div className="flex justify-between items-center">
-                                        <p className="font-bold text-lg">국민 000-00-0000-000</p>
-                                        <span className="text-sm text-gray-700">김아빠</span>
+                                        <p className="font-bold text-lg text-gray-900">국민 000-00-0000-000</p>
+                                        <span className="text-sm text-gray-800">김아빠</span>
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="text-xs text-gray-500">신랑 어머니</p>
+                                    <p className="text-xs text-gray-600 font-medium">신랑 어머니</p>
                                     <div className="flex justify-between items-center">
-                                        <p className="font-bold text-lg">신한 111-11-111111</p>
-                                        <span className="text-sm text-gray-700">박엄마</span>
+                                        <p className="font-bold text-lg text-gray-900">신한 111-11-111111</p>
+                                        <span className="text-sm text-gray-800">박엄마</span>
                                     </div>
                                 </div>
                             </div>
@@ -46,17 +46,17 @@ export default function Account() {
                             </summary>
                             <div className="p-4 border-t border-gray-100 text-left space-y-3 bg-gray-50">
                                 <div>
-                                    <p className="text-xs text-gray-500">신부 아버지</p>
+                                    <p className="text-xs text-gray-600 font-medium">신부 아버지</p>
                                     <div className="flex justify-between items-center">
-                                        <p className="font-bold text-lg">우리 222-22-222222</p>
-                                        <span className="text-sm text-gray-700">이아빠</span>
+                                        <p className="font-bold text-lg text-gray-900">우리 222-22-222222</p>
+                                        <span className="text-sm text-gray-800">이아빠</span>
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="text-xs text-gray-500">신부 어머니</p>
+                                    <p className="text-xs text-gray-600 font-medium">신부 어머니</p>
                                     <div className="flex justify-between items-center">
-                                        <p className="font-bold text-lg">농협 333-3333-3333-33</p>
-                                        <span className="text-sm text-gray-700">최엄마</span>
+                                        <p className="font-bold text-lg text-gray-900">농협 333-3333-3333-33</p>
+                                        <span className="text-sm text-gray-800">최엄마</span>
                                     </div>
                                 </div>
                             </div>
