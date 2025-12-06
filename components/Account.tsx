@@ -99,7 +99,7 @@ function AccountItem({ relation, name, bank, accountNumber }: { relation: string
 
     const handleCopy = async () => {
         try {
-            await navigator.clipboard.writeText(`${bank} ${accountNumber}`);
+            await navigator.clipboard.writeText(`${accountNumber}`);
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         } catch (err) {
