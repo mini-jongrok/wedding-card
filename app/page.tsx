@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
-import Gallery from "@/components/Gallery";
+import GalleryTop from "@/components/GalleryTop";
+import GalleryBottom from "@/components/GalleryBottom";
 import Map from "@/components/Map";
 import Account from "@/components/Account";
 
@@ -9,14 +10,17 @@ export default function Home() {
             {/* 1. Main Hero Section (Full Screen Photo) */}
             <Hero />
 
-            {/* 2. Gallery Section (Horizontal Scroll) */}
-            <Gallery />
+            {/* 2. Top Gallery (3 Vertical Best Cuts) */}
+            <GalleryTop />
 
             {/* 3. Account Section (Bank Info) */}
             <Account />
 
             {/* 4. Map Section (Location Info) */}
             <Map />
+
+            {/* 5. Bottom Gallery (Remaining Photos) */}
+            <GalleryBottom />
         </main>
     );
 }
