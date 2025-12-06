@@ -28,12 +28,6 @@ export default function Account() {
                             bank="신한"
                             accountNumber="111-11-111111"
                         />
-                        <AccountItem
-                            relation="신랑"
-                            name="백종록"
-                            bank="신한"
-                            accountNumber="000-00-000000"
-                        />
                     </AccountSection>
 
                     <AccountSection title="신부측 계좌번호">
@@ -48,12 +42,6 @@ export default function Account() {
                             name="김현정"
                             bank="농협"
                             accountNumber="333-3333-3333-33"
-                        />
-                        <AccountItem
-                            relation="신부"
-                            name="서상민"
-                            bank="우리"
-                            accountNumber="000-00-000000"
                         />
                     </AccountSection>
                 </div>
@@ -96,10 +84,10 @@ function AccountSection({ title, children }: { title: string, children: React.Re
 
 function AccountItem({ relation, name, bank, accountNumber }: { relation: string, name: string, bank: string, accountNumber: string }) {
     const [copied, setCopied] = useState(false);
-
+    const accountNumberOnlyDigit = accountNumber.replace(/[^0-9]/g, "");
     const handleCopy = async () => {
         try {
-            await navigator.clipboard.writeText(`${accountNumber}`);
+            await navigator.clipboard.writeText(`${accountNumberOnlyDigit}`);
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         } catch (err) {
