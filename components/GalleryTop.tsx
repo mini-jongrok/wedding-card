@@ -7,20 +7,25 @@ export default function GalleryTop() {
     const images = [photo1, photo2, photo3];
 
     return (
-        <section className="bg-white py-10 px-4 flex flex-col items-center gap-8">
+        <section className="relative w-full overflow-x-auto flex snap-x snap-mandatory scrollbar-hide">
+            {/* 가로 스크롤 컨테이너 */}
             {images.map((src, index) => (
-                <div key={index} className="w-full max-w-[500px] shadow-lg rounded-xl overflow-hidden">
+                <div key={index} className="relative w-full h-[80vh] flex-shrink-0 snap-center">
                     <Image
                         src={src}
                         alt={`Gallery Top Photo ${index + 1}`}
+                        fill
+                        className="object-cover"
                         placeholder="blur"
-                        style={{
-                            width: "100%",
-                            height: "auto",
-                        }}
+                        priority={index === 0}
                     />
                 </div>
             ))}
+
+            {/* 스크롤 힌트 (선택사항) */}
+            <div className="absolute bottom-4 right-4 bg-black/30 text-white px-3 py-1 rounded-full text-xs backdrop-blur-sm z-10">
+                SCROLL &rarr;
+            </div>
         </section>
     );
 }
