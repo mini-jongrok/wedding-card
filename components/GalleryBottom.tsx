@@ -1,14 +1,16 @@
 import Image from "next/image";
+import photo1 from "@/assets/gallery/photo_01.jpg";
+import photo2 from "@/assets/gallery/photo_02.jpg";
+import photo3 from "@/assets/gallery/photo_03.jpg";
 import photo4 from "@/assets/gallery/photo_04.jpg";
 import photo5 from "@/assets/gallery/photo_05.jpg";
 import photo6 from "@/assets/gallery/photo_06.jpg";
 import photo7 from "@/assets/gallery/photo_07.jpg";
 import photo8 from "@/assets/gallery/photo_08.jpg";
 import photo9 from "@/assets/gallery/photo_09.jpg";
-import photo10 from "@/assets/gallery/photo_10.jpg";
 
 export default function GalleryBottom() {
-    const images = [photo4, photo5, photo6, photo7, photo8, photo9, photo10];
+    const images = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9];
 
     return (
         <section className="bg-[#F9F9F4] py-16 px-4">
