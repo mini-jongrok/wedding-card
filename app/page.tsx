@@ -13,14 +13,14 @@ export default function Home() {
             {/* 2. Top Gallery (3 Vertical Best Cuts) */}
             {/* <GalleryTop /> */}
 
-            {/* 3. Account Section (Bank Info) */}
-            <Account />
-
-            {/* 4. Map Section (Location Info) */}
+            {/* 3. Map Section (Location Info) */}
             <Map />
 
-            {/* 5. Bottom Gallery (Remaining Photos) */}
+            {/* 4. Bottom Gallery (Remaining Photos) */}
             <GalleryBottom />
+
+            {/* 5. Account Section (Bank Info) - Moved to bottom */}
+            <Account />
         </main>
     );
 }

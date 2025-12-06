@@ -1,3 +1,7 @@
+"use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 export default function Account() {
     return (
         <section className="py-20 bg-[#F9F9F4] text-center">
@@ -11,59 +15,117 @@ export default function Account() {
                 </p>
 
                 <div className="space-y-4">
-                    {/* 신랑측 계좌번호 */}
-                    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-                        <details className="group">
-                            <summary className="flex justify-between items-center p-4 cursor-pointer list-none">
-                                <span className="font-bold text-lg text-[#2F4F2F]">신랑측 계좌번호</span>
-                                <span className="transition group-open:rotate-180">▼</span>
-                            </summary>
-                            <div className="p-4 border-t border-gray-100 text-left space-y-3 bg-gray-50">
-                                <div>
-                                    <p className="text-xs text-gray-600 font-medium">신랑 아버지</p>
-                                    <div className="flex justify-between items-center">
-                                        <p className="font-bold text-lg text-gray-900">국민 000-00-0000-000</p>
-                                        <span className="text-sm text-gray-800">김아빠</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p className="text-xs text-gray-600 font-medium">신랑 어머니</p>
-                                    <div className="flex justify-between items-center">
-                                        <p className="font-bold text-lg text-gray-900">신한 111-11-111111</p>
-                                        <span className="text-sm text-gray-800">박엄마</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </details>
-                    </div>
+                    <AccountSection title="신랑측 계좌번호">
+                        <AccountItem
+                            relation="신랑 아버지"
+                            name="백승곤"
+                            bank="국민"
+                            accountNumber="000-00-0000-000"
+                        />
+                        <AccountItem
+                            relation="신랑 어머니"
+                            name="임연주"
+                            bank="신한"
+                            accountNumber="111-11-111111"
+                        />
+                        <AccountItem
+                            relation="신랑"
+                            name="백종록"
+                            bank="신한"
+                            accountNumber="000-00-000000"
+                        />
+                    </AccountSection>
 
-                    {/* 신부측 계좌번호 */}
-                    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-                        <details className="group">
-                            <summary className="flex justify-between items-center p-4 cursor-pointer list-none">
-                                <span className="font-bold text-lg text-[#2F4F2F]">신부측 계좌번호</span>
-                                <span className="transition group-open:rotate-180">▼</span>
-                            </summary>
-                            <div className="p-4 border-t border-gray-100 text-left space-y-3 bg-gray-50">
-                                <div>
-                                    <p className="text-xs text-gray-600 font-medium">신부 아버지</p>
-                                    <div className="flex justify-between items-center">
-                                        <p className="font-bold text-lg text-gray-900">우리 222-22-222222</p>
-                                        <span className="text-sm text-gray-800">이아빠</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p className="text-xs text-gray-600 font-medium">신부 어머니</p>
-                                    <div className="flex justify-between items-center">
-                                        <p className="font-bold text-lg text-gray-900">농협 333-3333-3333-33</p>
-                                        <span className="text-sm text-gray-800">최엄마</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </details>
-                    </div>
+                    <AccountSection title="신부측 계좌번호">
+                        <AccountItem
+                            relation="신부 아버지"
+                            name="서동석"
+                            bank="우리"
+                            accountNumber="222-22-222222"
+                        />
+                        <AccountItem
+                            relation="신부 어머니"
+                            name="김현정"
+                            bank="농협"
+                            accountNumber="333-3333-3333-33"
+                        />
+                        <AccountItem
+                            relation="신부"
+                            name="서상민"
+                            bank="우리"
+                            accountNumber="000-00-000000"
+                        />
+                    </AccountSection>
                 </div>
             </div>
         </section>
+    );
+}
+
+function AccountSection({ title, children }: { title: string, children: React.ReactNode }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="border-b border-gray-200">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex justify-start items-center gap-2 py-4 bg-transparent outline-none"
+            >
+                <span className={`transform transition-transform duration-300 ${isOpen ? "rotate-90" : "rotate-0"}`}>
+                    &gt;
+                </span>
+                <span className="font-bold text-[#2F4F2F] text-lg">{title}</span>
+            </button>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pb-6 space-y-6 pt-2">
+                            {children}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
+
+function AccountItem({ relation, name, bank, accountNumber }: { relation: string, name: string, bank: string, accountNumber: string }) {
+    const [copied, setCopied] = useState(false);
+
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(`${bank} ${accountNumber}`);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error("Failed to copy", err);
+        }
+    };
+
+    return (
+        <div className="flex justify-between items-end text-left">
+            <div className="w-full">
+                <div className="flex justify-between items-start mb-1">
+                    <div className="flex items-center gap-2">
+                        <p className="text-xs text-gray-500">{relation}</p>
+                        <p className="text-sm text-gray-800 font-medium">{name}</p>
+                    </div>
+                    <button
+                        onClick={handleCopy}
+                        className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors"
+                    >
+                        {copied ? "복사됨" : "복사"}
+                    </button>
+                </div>
+                <div className="flex items-center gap-2">
+                    <p className="font-medium text-gray-800 text-base">{bank} {accountNumber}</p>
+                </div>
+            </div>
+        </div>
     );
 }
