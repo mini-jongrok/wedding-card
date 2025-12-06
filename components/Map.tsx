@@ -35,7 +35,7 @@ export default function Map() {
                 {/* 지도 표시 영역 */}
                 <div className="mb-8 mt-12">
                     {/* 카카오맵 - 지도퍼가기 (Iframe 방식) */}
-                    <div className="w-full h-[360px] mb-4 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+                    <div className="w-full h-[240px] mb-4 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
                         <iframe
                             src="/map.html"
                             width="100%"

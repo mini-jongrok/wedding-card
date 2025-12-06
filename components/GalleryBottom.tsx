@@ -33,8 +33,10 @@ export default function GalleryBottom() {
     };
 
     return (
-        <section className="bg-[#F9F9F4] py-16 px-4">
-            <h2 className="text-center text-xl tracking-widest text-[#2F4F2F] mb-8">GALLERY</h2>
+        <section className="bg-white py-16 px-4">
+            <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest text-center">
+                GALLERY
+            </h2>
 
             {/* Grid Layout: 3 Columns, Square Aspect Ratio */}
             <div className="grid grid-cols-3 gap-2 container mx-auto max-w-[1000px]">
@@ -42,7 +44,7 @@ export default function GalleryBottom() {
                     <div
                         key={index}
                         onClick={() => openLightbox(index)}
-                        className="relative aspect-square w-full bg-gray-200 overflow-hidden rounded-md cursor-pointer hover:opacity-90 transition-opacity"
+                        className="relative aspect-square w-full bg-gray-200 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
                     >
                         <Image
                             src={src}

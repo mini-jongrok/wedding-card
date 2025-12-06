@@ -11,7 +11,7 @@ export default function Home() {
             <Hero />
 
             {/* 2. Top Gallery (3 Vertical Best Cuts) */}
-            <GalleryTop />
+            {/* <GalleryTop /> */}
 
             {/* 3. Account Section (Bank Info) */}
             <Account />
