@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Invitation from "@/components/Invitation";
 import GalleryTop from "@/components/GalleryTop";
 import GalleryBottom from "@/components/GalleryBottom";
 import Map from "@/components/Map";
@@ -10,8 +11,8 @@ export default function Home() {
             {/* 1. Main Hero Section (Full Screen Photo) */}
             <Hero />
 
-            {/* 2. Top Gallery (3 Vertical Best Cuts) */}
-            {/* <GalleryTop /> */}
+            {/* 2. Invitation Section (Static Photo + Text) */}
+            <Invitation />
 
             {/* 3. Map Section (Location Info) */}
             <Map />

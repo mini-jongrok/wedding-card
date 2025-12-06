@@ -45,22 +45,28 @@ export default function Map() {
                         />
                     </div>
 
-                    <div className="flex gap-3">
+                    <div className="flex gap-4 justify-center">
                         <a
                             href="https://map.naver.com/p/search/라비두스"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 bg-[#03C75A] text-white py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
+                            className="w-12 h-12 bg-[#03C75A] rounded-full flex items-center justify-center hover:opacity-90 transition-opacity"
+                            aria-label="Naver Map"
                         >
-                            네이버 지도
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" clipRule="evenodd" d="M16.0367 21H20.25V3H16.0367V12.7533L7.96331 3H3.75V21H7.96331V11.2467L16.0367 21Z" fill="white" />
+                            </svg>
                         </a>
                         <a
                             href="https://map.kakao.com/link/to/라비두스,37.55620,126.99640"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 bg-[#FAE100] text-[#3b1e1e] py-3 rounded-lg font-medium hover:opacity-90 transition-opacity"
+                            className="w-12 h-12 bg-[#FAE100] rounded-full flex items-center justify-center hover:opacity-90 transition-opacity"
+                            aria-label="Kakao Map"
                         >
-                            카카오맵
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" clipRule="evenodd" d="M12 3C7.58172 3 4 5.91015 4 9.5C4 11.7578 5.33333 13.7812 7.42578 14.9453C7.30078 15.3438 6.87109 16.8047 6.48047 18.1328C6.34766 18.5938 6.84375 18.9102 7.20703 18.6758C9.28125 17.332 11.457 15.8984 12 15.8984H12.0234C12.0156 15.8984 12.0078 15.8984 12 15.8984C16.4183 15.8984 20 12.9883 20 9.39844C20 5.80859 16.4183 3 12 3Z" fill="#3B1E1E" />
+                            </svg>
                         </a>
                     </div>
                 </div>
