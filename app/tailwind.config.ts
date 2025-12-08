@@ -7,7 +7,11 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {}, // 필요하면 여기에 커스텀 컬러 추가
+    extend: {
+      fontFamily: {
+        mapo: ["MapoFlowerIsland", "sans-serif"],
+      },
+    }, // 필요하면 여기에 커스텀 컬러 추가
   },
   plugins: [],
 };
