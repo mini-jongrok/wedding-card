@@ -1,11 +1,19 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'MapoFlowerIsland';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+  font-family: 'Mapo';
+  src: url('/fonts/Mapo금빛나루_Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Allura';
+  src: url('/fonts/Allura_Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 
 :root {
