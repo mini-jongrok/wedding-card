@@ -6,10 +6,10 @@ export default function Account() {
     return (
         <section className="py-20 bg-[#F9F9F4] text-center">
             <div className="container mx-auto px-4 max-w-md">
-                <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest">
+                <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest" style={{ fontFamily: 'Mapo, serif' }}>
                     마음 전하실 곳
                 </h2>
-                <p className="text-gray-600 mb-10 text-sm leading-relaxed">
+                <p className="text-gray-600 mb-10 text-sm leading-relaxed" style={{ fontFamily: 'Mapo, sans-serif' }}>
                     참석하지 못하시더라도 축하의 마음을<br />
                     전달해 주시면 감사하겠습니다.
                 </p>
@@ -62,7 +62,7 @@ function AccountSection({ title, children }: { title: string, children: React.Re
                 <span className={`transform transition-transform duration-300 ${isOpen ? "rotate-90" : "rotate-0"}`}>
                     &gt;
                 </span>
-                <span className="font-bold text-[#2F4F2F] text-lg">{title}</span>
+                <span className="font-bold text-[#2F4F2F] text-lg" style={{ fontFamily: 'Mapo, sans-serif' }}>{title}</span>
             </button>
             <AnimatePresence>
                 {isOpen && (
@@ -100,18 +100,19 @@ function AccountItem({ relation, name, bank, accountNumber }: { relation: string
             <div className="w-full">
                 <div className="flex justify-between items-start mb-1">
                     <div className="flex items-center gap-2">
-                        <p className="text-xs text-gray-500">{relation}</p>
-                        <p className="text-sm text-gray-800 font-medium">{name}</p>
+                        <p className="text-xs text-gray-500" style={{ fontFamily: 'Mapo, sans-serif' }}>{relation}</p>
+                        <p className="text-sm text-gray-800 font-medium" style={{ fontFamily: 'Mapo, sans-serif' }}>{name}</p>
                     </div>
                     <button
                         onClick={handleCopy}
                         className="text-xs px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors"
+                        style={{ fontFamily: 'Mapo, sans-serif' }}
                     >
                         {copied ? "복사됨" : "복사"}
                     </button>
                 </div>
                 <div className="flex items-center gap-2">
-                    <p className="font-medium text-gray-800 text-base">{bank} {accountNumber}</p>
+                    <p className="font-medium text-gray-800 text-base" style={{ fontFamily: 'Mapo, sans-serif' }}>{bank} {accountNumber}</p>
                 </div>
             </div>
         </div>

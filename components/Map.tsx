@@ -4,31 +4,31 @@ export default function Map() {
     return (
         <section className="py-20 bg-white text-center">
             <div className="container mx-auto px-4">
-                <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest">
+                <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest" style={{ fontFamily: 'Mapo, serif' }}>
                     오시는 길
                 </h2>
 
                 <div className="mb-8">
-                    <p className="text-2xl font-bold mb-2 text-black">라비두스</p>
-                    <p className="text-gray-600">서울특별시 중구 필동로 5길7</p>
+                    <p className="text-2xl font-bold mb-2 text-black" style={{ fontFamily: 'Mapo, sans-serif' }}>라비두스</p>
+                    <p className="text-gray-600" style={{ fontFamily: 'Mapo, sans-serif' }}>서울특별시 중구 필동로 5길7</p>
                     <p className="text-gray-600">02-2265-7000</p>
                 </div>
 
                 <div className="text-center space-y-8 mt-12">
                     <div>
-                        <h3 className="font-bold text-[#2F4F2F] text-lg mb-2">지하철</h3>
-                        <p className="text-gray-600">3,4호선 충무로역 1번 출구 (도보 약 5분)</p>
+                        <h3 className="font-bold text-[#2F4F2F] text-lg mb-2" style={{ fontFamily: 'Mapo, sans-serif' }}>지하철</h3>
+                        <p className="text-gray-600" style={{ fontFamily: 'Mapo, sans-serif' }}>3,4호선 충무로역 1번 출구 (도보 약 5분)</p>
                     </div>
 
                     <div>
-                        <h3 className="font-bold text-[#2F4F2F] text-lg mb-2">셔틀버스</h3>
-                        <p className="text-gray-600">충무로역 1번 출구 뒤 BHC 치킨집 앞</p>
-                        <p className="text-sm text-gray-500 mt-1">* 예식 1시간 전부터 예식 시작 시간까지 운행 (3분 간격)</p>
+                        <h3 className="font-bold text-[#2F4F2F] text-lg mb-2" style={{ fontFamily: 'Mapo, sans-serif' }}>셔틀버스</h3>
+                        <p className="text-gray-600" style={{ fontFamily: 'Mapo, sans-serif' }}>충무로역 1번 출구 뒤 BHC 치킨집 앞</p>
+                        <p className="text-sm text-gray-500 mt-1" style={{ fontFamily: 'Mapo, sans-serif' }}>* 예식 1시간 전부터 예식 시작 시간까지 운행 (3분 간격)</p>
                     </div>
 
                     <div>
-                        <h3 className="font-bold text-[#2F4F2F] text-lg mb-2">주차</h3>
-                        <p className="text-gray-600">라비두스 별관 주차장</p>
+                        <h3 className="font-bold text-[#2F4F2F] text-lg mb-2" style={{ fontFamily: 'Mapo, sans-serif' }}>주차</h3>
+                        <p className="text-gray-600" style={{ fontFamily: 'Mapo, sans-serif' }}>라비두스 별관 주차장</p>
                     </div>
                 </div>
 
