@@ -22,11 +22,13 @@ export default function Hero() {
             </div>
 
             {/* 텍스트 내용 */}
-            <div className="relative z-10 flex h-full flex-col items-center justify-start pt-[33vh] text-center text-white">
-                <p className="mb-4 text-4xl" style={{ fontFamily: 'Allura, cursive' }}>We're getting married!</p>
-                <h1 className="mb-6 text-5xl font-bold font-serif" style={{ fontFamily: 'Mapo, serif' }}>
-                    서상민 & 백종록
-                </h1>
+            <div className="relative z-10 flex h-full flex-col items-center justify-start pt-[50vh] text-center text-white">
+
+                <p className="mb-32 text-4xl" style={{ fontFamily: 'Allura, cursive' }}>We're getting married!</p>
+
+                <h3 className="mb-6 text-5xl font-bold font-serif" style={{ fontFamily: 'Mapo, serif', fontSize: '2rem' }}>
+                    서상민 백종록
+                </h3>
                 <p className="text-xl font-light" style={{ fontFamily: 'Mapo, sans-serif' }}>
                     2026년 4월 5일 일요일 오전 11시 30분
                 </p>
