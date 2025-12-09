@@ -37,11 +37,6 @@ export default function Hero() {
                 <p className="mt-2 text-sm opacity-80" style={{ fontFamily: 'Mapo, sans-serif', fontSize: '0.8rem', fontWeight: 'bold' }}>
                     서울 라비두스
                 </p>
-
-                {/* 스크롤 유도 화살표 */}
-                <div className="absolute bottom-5 animate-bounce">
-                    <p className="text-xs tracking-widest opacity-70" style={{ fontFamily: 'Mapo, sans-serif' }}>아래로 스크롤</p>
-                </div>
             </div>
         </section>
     );
