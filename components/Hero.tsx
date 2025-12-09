@@ -20,22 +20,6 @@ export default function Hero() {
                 {/* 텍스트 가독성을 위한 어두운 오버레이 (그라데이션) */}
                 {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent" /> */}
             </div>
-
-            {/* 텍스트 내용 */}
-            <div className="relative z-10 flex h-full flex-col items-center justify-start pt-[9vh] text-center text-white">
-
-                <p className="mb-32 text-4xl" style={{ fontFamily: 'Allura, cursive', fontSize: '4rem' }}>We're getting married!</p>
-                <br></br>
-                <p className="mb-6 text-5xl font-bold font-serif" style={{ fontFamily: 'Mapo, serif', fontSize: '1.2rem', fontWeight: 'light' }}>
-                    서상민 백종록
-                </p>
-                <p className="text-xl font-light" style={{ fontFamily: 'Mapo, sans-serif', fontSize: '1rem', fontWeight: 'bold' }}>
-                    2026년 4월 5일 일요일 오전 11시 30분
-                </p>
-                <p className="mt-2 text-sm opacity-80" style={{ fontFamily: 'Mapo, sans-serif', fontSize: '0.8rem', fontWeight: 'bold' }}>
-                    서울 라비두스
-                </p>
-            </div>
         </section>
     );
 }
