@@ -22,11 +22,9 @@ export default function Hero() {
             </div>
 
             {/* 텍스트 내용 */}
-            <div className="relative z-10 flex h-full flex-col items-center justify-start pt-[40vh] text-center text-white">
+            <div className="relative z-10 flex h-full flex-col items-center justify-start pt-[9vh] text-center text-white">
 
                 <p className="mb-32 text-4xl" style={{ fontFamily: 'Allura, cursive', fontSize: '4rem' }}>We're getting married!</p>
-                <br></br>
-                <br></br>
                 <br></br>
                 <p className="mb-6 text-5xl font-bold font-serif" style={{ fontFamily: 'Mapo, serif', fontSize: '1.2rem', fontWeight: 'light' }}>
                     서상민 백종록
