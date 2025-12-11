@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import photo10 from "@/assets/gallery/photo_10.jpg";
+import photo10 from "@/app/assets/main_photo_egg.png";
 
 export default function Invitation() {
     return (
