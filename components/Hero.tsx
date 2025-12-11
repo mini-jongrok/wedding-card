@@ -1,5 +1,5 @@
 import Image from "next/image";
-import mainPhoto from "@/app/assets/main_photo.jpg";
+import mainPhoto from "@/app/assets/main_photo.png";
 
 export default function Hero() {
     return (
