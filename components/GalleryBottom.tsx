@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import photo1 from "@/assets/gallery/photo_01.jpg";
@@ -12,6 +12,8 @@ import photo7 from "@/assets/gallery/photo_07.jpg";
 import photo8 from "@/assets/gallery/photo_08.jpg";
 import photo9 from "@/assets/gallery/photo_09.jpg";
 import cameraGif from "@/app/assets/camera_photo.gif";
+
+import galleryWrapper from "@/app/assets/gallery_wrap_each_photo.png";
 
 const variants = {
     enter: (direction: number) => {
@@ -91,22 +93,37 @@ export default function GalleryBottom() {
                 GALLERY
             </h2>
 
-            {/* Grid Layout: 3 Columns, Square Aspect Ratio */}
-            <div className="grid grid-cols-3 gap-2 container mx-auto max-w-[1000px]">
+            {/* Grid Layout */}
+            <div className="grid grid-cols-3 gap-16 container mx-auto max-w-[1000px] px-12">
                 {images.map((src, i) => (
                     <div
                         key={i}
                         onClick={() => openLightbox(i)}
-                        className="relative aspect-square w-full bg-gray-200 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+                        className="relative aspect-[428/720] w-full cursor-pointer hover:scale-105 transition-transform duration-300 rounded-xl overflow-hidden"
                     >
-                        <Image
-                            src={src}
-                            alt={`Gallery Bottom Photo ${i + 1}`}
-                            fill
-                            className="object-cover"
-                            placeholder="blur"
-                            sizes="(max-width: 768px) 33vw, 33vw"
-                        />
+                        {/* Wrapper Image (Frame) */}
+                        <div className="absolute inset-0 z-20 pointer-events-none">
+                            <Image
+                                src={galleryWrapper}
+                                alt="Frame"
+                                fill
+                                className="object-fill"
+                            />
+                        </div>
+
+                        {/* Photo */}
+                        <div className="absolute top-[8%] bottom-[15%] left-[5%] right-[5%] z-10">
+                            <div className="relative w-full h-full overflow-hidden">
+                                <Image
+                                    src={src}
+                                    alt={`Gallery Bottom Photo ${i + 1}`}
+                                    fill
+                                    className="object-cover"
+                                    placeholder="blur"
+                                    sizes="(max-width: 768px) 33vw, 33vw"
+                                />
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -121,7 +138,7 @@ export default function GalleryBottom() {
                         className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center backdrop-blur-sm touch-none"
                         onClick={closeLightbox}
                     >
-                        <div 
+                        <div
                             className="relative w-full h-full flex items-center justify-center"
                             onClick={(e) => e.stopPropagation()}
                         >
