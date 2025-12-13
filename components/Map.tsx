@@ -1,6 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
-
 export default function Map() {
     return (
         <section className="py-20 mt-64 text-center">

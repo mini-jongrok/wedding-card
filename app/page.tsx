@@ -1,11 +1,9 @@
 import Hero from "@/components/Hero";
 import Invitation from "@/components/Invitation";
-import GalleryTop from "@/components/GalleryTop";
 import GalleryBottom from "@/components/GalleryBottom";
 import Calendar from "@/components/Calendar";
 import Map from "@/components/Map";
 import Account from "@/components/Account";
-import Guestbook from "@/components/Guestbook";
 import Image from "next/image";
 import background from "@/app/assets/background.png";
 

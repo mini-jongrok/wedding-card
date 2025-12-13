@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, useMotionValue, animate } from "framer-motion";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import photo1 from "@/assets/gallery/photo_01.jpg";
 import photo2 from "@/assets/gallery/photo_02.jpg";
 import photo3 from "@/assets/gallery/photo_03.jpg";
@@ -13,52 +13,65 @@ import photo8 from "@/assets/gallery/photo_08.jpg";
 import photo9 from "@/assets/gallery/photo_09.jpg";
 import cameraGif from "@/app/assets/camera_photo.gif";
 
+const variants = {
+    enter: (direction: number) => {
+        return {
+            x: direction > 0 ? 1000 : -1000,
+            opacity: 0
+        };
+    },
+    center: {
+        zIndex: 1,
+        x: 0,
+        opacity: 1
+    },
+    exit: (direction: number) => {
+        return {
+            zIndex: 0,
+            x: direction < 0 ? 1000 : -1000,
+            opacity: 0
+        };
+    }
+};
+
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+};
+
 export default function GalleryBottom() {
     const images = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9];
-    const [index, setIndex] = useState<number>(0);
+    const [index, setIndex] = useState(0);
+    const [direction, setDirection] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
-    const x = useMotionValue(0);
-    const containerRef = useRef<HTMLDivElement>(null);
 
     const openLightbox = (i: number) => {
         setIndex(i);
         setIsOpen(true);
-        x.set(0);
     };
+
     const closeLightbox = () => setIsOpen(false);
 
-    const getIndex = (i: number) => {
-        // Handle negative and positive overflow
-        return (i + images.length) % images.length;
+    const paginate = (newDirection: number) => {
+        setDirection(newDirection);
+        // Use functional state update to ensure latest index
+        setIndex((prevIndex) => {
+            let nextIndex = prevIndex + newDirection;
+            if (nextIndex < 0) nextIndex = images.length - 1;
+            if (nextIndex >= images.length) nextIndex = 0;
+            return nextIndex;
+        });
     };
 
-    const handleDragEnd = () => {
-        const currentX = x.get();
-        const containerWidth = containerRef.current?.offsetWidth || 0;
-        const threshold = containerWidth * 0.25; // 25% drag to swipe
+    const handleDragEnd = (e: any, { offset, velocity }: PanInfo) => {
+        const swipe = swipePower(offset.x, velocity.x);
 
-        if (currentX < -threshold) {
-            // Swipe Left -> Next
-            animate(x, -containerWidth, { type: "spring", stiffness: 300, damping: 30 }).then(() => {
-                setIndex((prev) => getIndex(prev + 1));
-                x.set(0);
-            });
-        } else if (currentX > threshold) {
-            // Swipe Right -> Prev
-            animate(x, containerWidth, { type: "spring", stiffness: 300, damping: 30 }).then(() => {
-                setIndex((prev) => getIndex(prev - 1));
-                x.set(0);
-            });
-        } else {
-            // Snap back
-            animate(x, 0, { type: "spring", stiffness: 300, damping: 30 });
+        if (swipe < -swipeConfidenceThreshold) {
+            paginate(1);
+        } else if (swipe > swipeConfidenceThreshold) {
+            paginate(-1);
         }
     };
-
-    // Images to show: Prev (-1), Current (0), Next (1)
-    const prevImage = images[getIndex(index - 1)];
-    const currentImage = images[images.length > 0 ? getIndex(index) : 0]; // Safety check
-    const nextImage = images[getIndex(index + 1)];
 
     return (
         <section className="py-16">
@@ -105,44 +118,43 @@ export default function GalleryBottom() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center backdrop-blur-sm"
+                        className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center backdrop-blur-sm touch-none"
                         onClick={closeLightbox}
                     >
-                        {/* Container */}
-                        <div
-                            ref={containerRef}
-                            className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden"
+                        <div 
+                            className="relative w-full h-full flex items-center justify-center"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <motion.div
-                                className="relative w-full h-full flex"
-                                style={{ x }}
-                                drag="x"
-                                dragConstraints={{ left: 0, right: 0 }} // Elastic drag
-                                dragElastic={0.8}
-                                onDragEnd={handleDragEnd}
-                            >
-                                {/* Previous Image */}
-                                <div className="absolute top-0 left-[-100%] w-full h-full p-4 flex items-center justify-center">
-                                    <div className="relative w-full h-full max-w-4xl max-h-[80vh]">
-                                        <Image src={prevImage} alt="Previous" fill className="object-contain pointer-events-none" />
+                            <AnimatePresence initial={false} custom={direction}>
+                                <motion.div
+                                    key={index}
+                                    custom={direction}
+                                    variants={variants}
+                                    initial="enter"
+                                    animate="center"
+                                    exit="exit"
+                                    transition={{
+                                        x: { type: "spring", stiffness: 300, damping: 30 },
+                                        opacity: { duration: 0.2 }
+                                    }}
+                                    drag="x"
+                                    dragConstraints={{ left: 0, right: 0 }}
+                                    dragElastic={1}
+                                    onDragEnd={handleDragEnd}
+                                    className="absolute w-full h-full max-w-4xl max-h-[80vh] flex items-center justify-center p-4"
+                                >
+                                    <div className="relative w-full h-full">
+                                        <Image
+                                            src={images[index]}
+                                            alt={`Gallery Image ${index + 1}`}
+                                            fill
+                                            className="object-contain pointer-events-none"
+                                            priority
+                                            sizes="100vw"
+                                        />
                                     </div>
-                                </div>
-
-                                {/* Current Image */}
-                                <div className="absolute top-0 left-0 w-full h-full p-4 flex items-center justify-center">
-                                    <div className="relative w-full h-full max-w-4xl max-h-[80vh]">
-                                        <Image src={currentImage} alt="Current" fill className="object-contain pointer-events-none" priority />
-                                    </div>
-                                </div>
-
-                                {/* Next Image */}
-                                <div className="absolute top-0 left-[100%] w-full h-full p-4 flex items-center justify-center">
-                                    <div className="relative w-full h-full max-w-4xl max-h-[80vh]">
-                                        <Image src={nextImage} alt="Next" fill className="object-contain pointer-events-none" />
-                                    </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
 
                         {/* Close Button */}
@@ -161,4 +173,3 @@ export default function GalleryBottom() {
         </section>
     );
 }
-
