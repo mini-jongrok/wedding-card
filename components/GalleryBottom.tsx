@@ -11,6 +11,12 @@ import photo6 from "@/assets/gallery/photo_06.jpg";
 import photo7 from "@/assets/gallery/photo_07.jpg";
 import photo8 from "@/assets/gallery/photo_08.jpg";
 import photo9 from "@/assets/gallery/photo_09.jpg";
+import photo10 from "@/assets/gallery/photo_10.jpg";
+import photo11 from "@/assets/gallery/photo_11.jpg";
+import photo12 from "@/assets/gallery/photo_12.jpg";
+import photo13 from "@/assets/gallery/photo_13.jpg";
+import photo14 from "@/assets/gallery/photo_14.jpg";
+import photo15 from "@/assets/gallery/photo_15.jpg";
 import cameraGif from "@/app/assets/camera_photo.gif";
 
 import galleryWrapper from "@/app/assets/gallery_wrap_each_photo.png";
@@ -42,7 +48,11 @@ const swipePower = (offset: number, velocity: number) => {
 };
 
 export default function GalleryBottom() {
-    const images = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9];
+    const images = [
+        photo1, photo2, photo3, photo4, photo5,
+        photo6, photo7, photo8, photo9, photo10,
+        photo11, photo12, photo13, photo14, photo15
+    ];
     const [index, setIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
