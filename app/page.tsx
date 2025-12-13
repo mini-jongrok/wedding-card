@@ -5,6 +5,7 @@ import GalleryBottom from "@/components/GalleryBottom";
 import Calendar from "@/components/Calendar";
 import Map from "@/components/Map";
 import Account from "@/components/Account";
+import Guestbook from "@/components/Guestbook";
 import Image from "next/image";
 import background from "@/app/assets/background.png";
 
@@ -38,6 +39,9 @@ export default function Home() {
 
             {/* 5. Account Section (Bank Info) - Moved to bottom */}
             <Account />
+
+            {/* 6. Guestbook Section */}
+            <Guestbook />
         </main>
     );
 }
