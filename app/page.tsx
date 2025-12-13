@@ -41,7 +41,7 @@ export default function Home() {
             <Account />
 
             {/* 6. Guestbook Section */}
-            <Guestbook />
+            {/* <Guestbook /> */}
         </main>
     );
 }
