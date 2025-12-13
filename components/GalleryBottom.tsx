@@ -104,7 +104,7 @@ export default function GalleryBottom() {
             </h2>
 
             {/* Grid Layout */}
-            <div className="grid grid-cols-3 gap-16 container mx-auto max-w-[1000px] px-12">
+            <div className="grid grid-cols-3 gap-12 container mx-auto max-w-[1000px] px-8">
                 {images.map((src, i) => (
                     <div
                         key={i}
