@@ -16,7 +16,12 @@
 
 @font-face {
   font-family: 'MuseumClassic';
-  src: url('/fonts/국립박물관문화재단클래식_Medium.otf') format('opentype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AtSign';
+  src: url('/fonts/At Sign_Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

@@ -11,6 +11,7 @@ import photo6 from "@/assets/gallery/photo_06.jpg";
 import photo7 from "@/assets/gallery/photo_07.jpg";
 import photo8 from "@/assets/gallery/photo_08.jpg";
 import photo9 from "@/assets/gallery/photo_09.jpg";
+import cameraGif from "@/app/assets/camera_photo.gif";
 
 export default function GalleryBottom() {
     const images = [photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8, photo9];
@@ -60,8 +61,20 @@ export default function GalleryBottom() {
     const nextImage = images[getIndex(index + 1)];
 
     return (
-        <section className="py-16 px-4">
-            <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest text-center">
+        <section className="py-16">
+            {/* Camera GIF */}
+            <div className="flex justify-center mb-4">
+                <Image
+                    src={cameraGif}
+                    alt="Camera Animation"
+                    width={50}
+                    height={50}
+                    unoptimized
+                />
+            </div>
+
+            {/* Title */}
+            <h2 className="text-3xl tracking-[0.2em] text-[#2F4F2F] mb-12 font-light select-none text-center" style={{ fontFamily: 'AtSign, cursive' }}>
                 GALLERY
             </h2>
 
