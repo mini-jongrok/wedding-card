@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+const API_URL = process.env.API_URL || 'https://wedding-backend-1084988890491.asia-northeast3.run.app';
+
 const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
@@ -14,11 +16,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/comments',
-        destination: 'https://rmgpgab-wedding-backend-xyz.a.run.app/comments',
+        destination: `${API_URL}/comments`,
       },
       {
         source: '/api/comments/:path*',
-        destination: 'https://rmgpgab-wedding-backend-xyz.a.run.app/comments/:path*',
+        destination: `${API_URL}/comments/:path*`,
       },
     ];
   },
