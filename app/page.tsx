@@ -6,6 +6,7 @@ import Map from "@/components/Map";
 import Account from "@/components/Account";
 import Image from "next/image";
 import background from "@/app/assets/background.png";
+import eggPhoto from "@/app/assets/main_photo_egg.png";
 
 export default function Home() {
     return (
@@ -28,6 +29,18 @@ export default function Home() {
 
             {/* 3. Calendar Section (April 2026) */}
             <Calendar />
+
+            {/* Egg Photo Decoration */}
+            <div className="flex justify-center mt-64 -mb-20 relative z-10 pointer-events-none">
+                <Image
+                    src={eggPhoto}
+                    alt="Decoration"
+                    width={250}
+                    height={250}
+                    quality={100}
+                    priority
+                />
+            </div>
 
             {/* 4. Map Section (Location Info) */}
             <Map />
