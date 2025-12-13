@@ -14,6 +14,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'MuseumClassic';
+  src: url('/fonts/국립박물관문화재단클래식_Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 
 :root {

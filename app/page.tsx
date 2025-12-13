@@ -2,9 +2,9 @@ import Hero from "@/components/Hero";
 import Invitation from "@/components/Invitation";
 import GalleryTop from "@/components/GalleryTop";
 import GalleryBottom from "@/components/GalleryBottom";
+import Calendar from "@/components/Calendar";
 import Map from "@/components/Map";
 import Account from "@/components/Account";
-
 import Image from "next/image";
 import background from "@/app/assets/background.png";
 
@@ -27,7 +27,10 @@ export default function Home() {
             {/* 2. Invitation Section (Static Photo + Text) */}
             <Invitation />
 
-            {/* 3. Map Section (Location Info) */}
+            {/* 3. Calendar Section (April 2026) */}
+            <Calendar />
+
+            {/* 4. Map Section (Location Info) */}
             <Map />
 
             {/* 4. Bottom Gallery (Remaining Photos) */}
