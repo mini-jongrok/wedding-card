@@ -1,11 +1,23 @@
 "use client";
 import Image from 'next/image';
 import calendarImage from '@/app/assets/calendar.png';
+import calendarBackground from '@/app/assets/calendar_background.png';
 import { motion } from 'framer-motion';
 
 export default function Calendar() {
     return (
         <section className="relative w-full py-10 overflow-hidden">
+            {/* Section Background Pattern */}
+            <div className="absolute inset-0 -z-10">
+                <Image
+                    src={calendarBackground}
+                    alt="Calendar Section Background"
+                    fill
+                    className="object-cover opacity-50"
+                    priority
+                />
+            </div>
+
             <div className="relative z-10 flex flex-col items-center justify-center p-4 w-full">
                 <div className="relative w-full max-w-lg">
                     {/* Calendar Background Image */}
@@ -65,7 +77,7 @@ export default function Calendar() {
                                             strokeLinecap="round"
                                             initial={{ pathLength: 0, opacity: 0 }}
                                             whileInView={{ pathLength: 1, opacity: 1 }}
-                                            viewport={{ margin: "-100px" }}
+                                            viewport={{ margin: "-20%" }}
                                             transition={{ duration: 0.8, ease: "easeInOut" }}
                                         />
                                     </svg>

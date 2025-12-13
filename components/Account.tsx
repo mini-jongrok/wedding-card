@@ -19,14 +19,14 @@ export default function Account() {
                         <AccountItem
                             relation="신랑 아버지"
                             name="백승곤"
-                            bank="국민"
-                            accountNumber="000-00-0000-000"
+                            bank="기업은행"
+                            accountNumber="409-007888-01012"
                         />
                         <AccountItem
                             relation="신랑 어머니"
                             name="임연주"
-                            bank="신한"
-                            accountNumber="111-11-111111"
+                            bank="농협"
+                            accountNumber="1110-12-193447"
                         />
                     </AccountSection>
 
@@ -34,14 +34,14 @@ export default function Account() {
                         <AccountItem
                             relation="신부 아버지"
                             name="서동석"
-                            bank="우리"
-                            accountNumber="222-22-222222"
+                            bank="신협"
+                            accountNumber="05-01212-000337"
                         />
                         <AccountItem
                             relation="신부 어머니"
                             name="김현정"
-                            bank="농협"
-                            accountNumber="333-3333-3333-33"
+                            bank="케이뱅크"
+                            accountNumber="10-01135-90281"
                         />
                     </AccountSection>
                 </div>
