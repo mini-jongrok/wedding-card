@@ -5,9 +5,22 @@ import GalleryBottom from "@/components/GalleryBottom";
 import Map from "@/components/Map";
 import Account from "@/components/Account";
 
+import Image from "next/image";
+import background from "@/app/assets/background.png";
+
 export default function Home() {
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen relative">
+            <div className="fixed inset-0 -z-10">
+                <Image
+                    src={background}
+                    alt="Background"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+            </div>
+
             {/* 1. Main Hero Section (Full Screen Photo) */}
             <Hero />
 

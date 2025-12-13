@@ -60,7 +60,7 @@ export default function GalleryBottom() {
     const nextImage = images[getIndex(index + 1)];
 
     return (
-        <section className="bg-white py-16 px-4">
+        <section className="py-16 px-4">
             <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest text-center">
                 GALLERY
             </h2>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Map() {
     return (
-        <section className="py-20 bg-white text-center">
+        <section className="py-20 text-center">
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest" style={{ fontFamily: 'Mapo, serif' }}>
                     오시는 길
