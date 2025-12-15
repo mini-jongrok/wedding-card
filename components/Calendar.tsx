@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import calendarImage from '@/app/assets/calendar.png';
 import calendarBackground from '@/app/assets/calendar_background.png';
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Calendar() {
     return (
@@ -32,89 +32,74 @@ export default function Calendar() {
                     <div className="absolute inset-0 flex flex-col items-center justify-center pt-6 pb-2 text-[#5A4D4D]">
                         <br />
                         {/* Month */}
-                        <div className="text-2xl font-bold mb-2" style={{ fontFamily: 'MuseumClassic, serif' }}>
+                        <div className="text-6xl font-bold mb-4 text-[#FFE4E6]" style={{ fontFamily: 'MuseumClassic, serif' }}>
+                            4
+                        </div>
+                        <div className="text-1xl font-bold mb-2 text-[#FFFFFF]" style={{ fontFamily: 'MuseumClassic, serif' }}>
                             April
                         </div>
                         <br />
                         <br />
 
                         {/* Calendar Grid */}
-                        <div className="w-[50%] text-center text-xs md:text-sm leading-relaxed" style={{ fontFamily: 'MuseumClassic, serif' }}>
+                        <div className="w-[50%] text-center text-sm md:text-base leading-relaxed" style={{ fontFamily: 'MuseumClassic, serif' }}>
                             {/* Days of Week - Monday Start */}
                             <div className="grid grid-cols-7 mb-2 font-bold opacity-80">
-                                <div>M</div>
-                                <div>T</div>
-                                <div>W</div>
-                                <div>T</div>
-                                <div>F</div>
-                                <div className="text-[#1E3A8A]">S</div>
-                                <div className="text-[#991B1B]">S</div>
+                                <div className='text-[#FFFFFF]'>M</div>
+                                <div className='text-[#FFFFFF]'>T</div>
+                                <div className='text-[#FFFFFF]'>W</div>
+                                <div className='text-[#FFFFFF]'>T</div>
+                                <div className='text-[#FFFFFF]'>F</div>
+                                <div className="text-[#6082B6]">S</div>
+                                <div className="text-[#FB7185]">S</div>
                             </div>
 
                             {/* Dates */}
-                            <div className="grid grid-cols-7 gap-y-1">
+                            <div className="grid grid-cols-7 gap-y-1 font-bold">
                                 {/* Week 1 */}
                                 <div></div> {/* Mon 30 */}
                                 <div></div> {/* Tue 31 */}
-                                <div>1</div>  {/* Wed 1 */}
-                                <div>2</div>
-                                <div>3</div>
-                                <div className="text-[#1E3A8A]">4</div>
-                                <div className="relative flex items-center justify-center text-[#991B1B] font-bold">
+                                <div className="text-[#FFFFFF]">1</div>  {/* Wed 1 */}
+                                <div className="text-[#FFFFFF]">2</div>
+                                <div className="text-[#FFFFFF]">3</div>
+                                <div className="text-[#6082B6]">4</div>
+                                <div className="relative flex items-center justify-center text-[#FB7185] font-bold">
                                     <span className="relative z-10">5</span>
-                                    <svg
-                                        className="absolute w-[200%] h-[200%] -top-1/2 -left-1/2 pointer-events-none"
-                                        viewBox="0 0 100 100"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <motion.path
-                                            // d="M 25, 50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0" // Simple circle path
-                                            // More natural hand-drawn path approximation
-                                            d="M 30 50 C 30 30, 45 20, 55 25 C 75 30, 85 50, 70 70 C 55 85, 30 80, 25 60 C 22 45, 35 30, 45 35"
-                                            fill="none"
-                                            stroke="#991B1B"
-                                            strokeWidth="3"
-                                            strokeLinecap="round"
-                                            initial={{ pathLength: 0, opacity: 0 }}
-                                            whileInView={{ pathLength: 1, opacity: 1 }}
-                                            viewport={{ margin: "-20%" }}
-                                            transition={{ duration: 0.8, ease: "easeInOut" }}
-                                        />
-                                    </svg>
+                                    <HeartHighlight />
                                 </div> {/* Sun 5 - Highlighted */}
 
                                 {/* Week 2 */}
-                                <div>6</div>
-                                <div>7</div>
-                                <div>8</div>
-                                <div>9</div>
-                                <div>10</div>
-                                <div className="text-[#1E3A8A]">11</div>
-                                <div className="text-[#991B1B]">12</div>
+                                <div className="text-[#FFFFFF]">6</div>
+                                <div className="text-[#FFFFFF]">7</div>
+                                <div className="text-[#FFFFFF]">8</div>
+                                <div className="text-[#FFFFFF]">9</div>
+                                <div className="text-[#FFFFFF]">10</div>
+                                <div className="text-[#6082B6]">11</div>
+                                <div className="text-[#FB7185]">12</div>
 
                                 {/* Week 3 */}
-                                <div>13</div>
-                                <div>14</div>
-                                <div>15</div>
-                                <div>16</div>
-                                <div>17</div>
-                                <div className="text-[#1E3A8A]">18</div>
-                                <div className="text-[#991B1B]">19</div>
+                                <div className='text-[#FFFFFF]'>13</div>
+                                <div className='text-[#FFFFFF]'>14</div>
+                                <div className='text-[#FFFFFF]'>15</div>
+                                <div className='text-[#FFFFFF]'>16</div>
+                                <div className='text-[#FFFFFF]'>17</div>
+                                <div className="text-[#6082B6]">18</div>
+                                <div className="text-[#FB7185]">19</div>
 
                                 {/* Week 4 */}
-                                <div>20</div>
-                                <div>21</div>
-                                <div>22</div>
-                                <div>23</div>
-                                <div>24</div>
-                                <div className="text-[#1E3A8A]">25</div>
-                                <div className="text-[#991B1B]">26</div>
+                                <div className="text-[#FFFFFF]">20</div>
+                                <div className="text-[#FFFFFF]">21</div>
+                                <div className="text-[#FFFFFF]">22</div>
+                                <div className="text-[#FFFFFF]">23</div>
+                                <div className="text-[#FFFFFF]">24</div>
+                                <div className="text-[#6082B6]">25</div>
+                                <div className="text-[#FB7185]">26</div>
 
                                 {/* Week 5 */}
-                                <div>27</div>
-                                <div>28</div>
-                                <div>29</div>
-                                <div>30</div>
+                                <div className='text-[#FFFFFF]'>27</div>
+                                <div className='text-[#FFFFFF]'>28</div>
+                                <div className='text-[#FFFFFF]'>29</div>
+                                <div className='text-[#FFFFFF]'>30</div>
                                 <div></div>
                                 <div></div>
                                 <div></div>
@@ -124,5 +109,23 @@ export default function Calendar() {
                 </div>
             </div>
         </section >
+    );
+}
+
+function HeartHighlight() {
+    return (
+        <svg
+            className="absolute w-[220%] h-[220%] -top-[50%] -left-[60%] pointer-events-none"
+            viewBox="0 0 120 120"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            {/* Heart Background */}
+            <path
+                d="M60 95 C30 70 15 55 15 40 C15 25 28 15 42 15 C52 15 60 22 60 22 C60 22 68 15 78 15 C92 15 105 25 105 40 C105 55 90 70 60 95 Z"
+                fill="#FFE4E6"
+                stroke="none"
+                className="opacity-90"
+            />
+        </svg>
     );
 }

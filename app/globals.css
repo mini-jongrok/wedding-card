@@ -53,3 +53,19 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes draw-circle {
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.animate-draw-circle {
+  stroke-dasharray: 1000;
+  /* Increased to be safe for longer paths */
+  stroke-dashoffset: 1000;
+  opacity: 0;
+  animation: draw-circle 1.5s ease-out forwards;
+  /* Slightly longer duration for smoother effect */
+}
