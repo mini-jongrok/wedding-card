@@ -29,7 +29,7 @@ export default function Calendar() {
                     />
 
                     {/* Calendar Content Overlay */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center pt-6 pb-2 text-[#5A4D4D]">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center pt-2 pb-14 text-[#5A4D4D]">
                         <br />
                         {/* Month */}
                         <div className="text-6xl font-bold mb-4 text-[#FFE4E6]" style={{ fontFamily: 'MuseumClassic, serif' }}>
