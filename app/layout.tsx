@@ -21,11 +21,11 @@ const notoSerifKr = Noto_Serif_KR({
 });
 
 export const metadata: Metadata = {
-  title: "서상민 & 백종록 결혼합니다",
-  description: "2026년 4월 5일, 결혼식에 초대합니다.",
+  title: "서상민 ♥ 백종록 결혼합니다",
+  description: "2026년 4월 5일 11시 30분, 라비두스",
   openGraph: {
-    title: "서상민 & 백종록 결혼합니다",
-    description: "2026년 4월 5일, 결혼식에 초대합니다.",
+    title: "서상민 ♥ 백종록 결혼합니다",
+    description: "2026년 4월 5일 11시 30분, 라비두스",
     images: [
       {
         url: "/og-image.png",
