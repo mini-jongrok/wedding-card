@@ -21,8 +21,20 @@ const notoSerifKr = Noto_Serif_KR({
 });
 
 export const metadata: Metadata = {
-  title: "Wedding Invitation",
-  description: "Wedding Invitation",
+  title: "서상민 & 백종록 결혼합니다",
+  description: "2026년 4월 5일, 결혼식에 초대합니다.",
+  openGraph: {
+    title: "서상민 & 백종록 결혼합니다",
+    description: "2026년 4월 5일, 결혼식에 초대합니다.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 800,
+        height: 600,
+        alt: "Wedding Invitation",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
