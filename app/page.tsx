@@ -7,6 +7,7 @@ import Account from "@/components/Account";
 import Image from "next/image";
 import background from "@/app/assets/background.png";
 import eggPhoto from "@/app/assets/main_photo_egg.png";
+import KakaoShareButton from "@/components/KakaoShareButton";
 
 export default function Home() {
     return (
@@ -50,6 +51,10 @@ export default function Home() {
 
             {/* 5. Account Section (Bank Info) - Moved to bottom */}
             <Account />
+
+            <div className="py-20 flex justify-center">
+                <KakaoShareButton />
+            </div>
 
             {/* 6. Guestbook Section */}
             {/* <Guestbook /> */}

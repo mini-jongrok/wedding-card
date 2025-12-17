@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import KakaoScript from "@/components/KakaoScript";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -48,6 +49,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerifKr.variable} font-mapo antialiased`}
       >
         {children}
+        <KakaoScript />
       </body>
     </html>
   );
