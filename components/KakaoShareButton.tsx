@@ -20,6 +20,14 @@ const KakaoShareButton = () => {
     }, []);
 
     const handleShare = () => {
+        // DEBUGGING ALERT
+        const status = {
+            origin: typeof window !== 'undefined' ? window.location.origin : 'undefined',
+            key: process.env.NEXT_PUBLIC_KAKAO_API_KEY ? process.env.NEXT_PUBLIC_KAKAO_API_KEY.slice(0, 5) + '...' : 'MISSING',
+            isInit: typeof window !== 'undefined' && window.Kakao ? window.Kakao.isInitialized() : 'Kakao Missing'
+        };
+        alert(`Debug Info:\nDomain: ${status.origin}\nKey: ${status.key}\nInit: ${status.isInit}`);
+
         console.log("Share button clicked");
         console.log("Window.Kakao:", window.Kakao);
 
