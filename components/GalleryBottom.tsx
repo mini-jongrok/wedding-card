@@ -75,6 +75,7 @@ export default function GalleryBottom() {
         });
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleDragEnd = (e: any, { offset, velocity }: PanInfo) => {
         const swipe = swipePower(offset.x, velocity.x);
 

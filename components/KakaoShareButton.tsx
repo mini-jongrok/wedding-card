@@ -4,67 +4,38 @@ import React, { useEffect } from "react";
 
 const KakaoShareButton = () => {
     useEffect(() => {
-        // Kakao SDK가 로드되었는지 확인
-        if (typeof window !== "undefined" && window.Kakao) {
-            // 이미 초기화되어 있는지 확인
-            if (!window.Kakao.isInitialized()) {
-                // 환경변수에서 키를 가져옴
-                const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_API_KEY;
-                if (kakaoKey) {
-                    window.Kakao.init(kakaoKey);
-                } else {
-                    console.warn("Kakao JS Key is missing in .env.local");
-                }
-            }
-        }
+        // Kakao SDK가 로드되었는지 확인 - KakaoScript.tsx에서 로드됨
     }, []);
 
     const handleShare = () => {
-        console.log("Share button clicked");
-        console.log("Window.Kakao:", window.Kakao);
+        // if (typeof window === "undefined" || !window.Kakao) {
+        //     alert("카카오톡 SDK가 로드되지 않았습니다.");
+        //     return;
+        // }
 
-        if (typeof window === "undefined" || !window.Kakao) {
-            alert("카카오톡 SDK가 로드되지 않았습니다.");
+        if (!window.Kakao || !window.Kakao.isInitialized()) {
+            alert("카카오톡 SDK가 아직 초기화되지 않았습니다. 잠시 후 다시 시도해주세요.");
+            console.error("Kakao SDK not initialized. Check if KakaoScript loaded correctly.");
             return;
         }
 
-        if (!window.Kakao.isInitialized()) {
-            console.log("Attempting late initialization...");
-            const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_API_KEY;
-            if (kakaoKey) {
-                try {
-                    window.Kakao.init(kakaoKey);
-                    console.log("Late initialization successful");
-                } catch (e) {
-                    console.error("Late initialization failed", e);
-                }
-            }
-        }
-
-        if (!window.Kakao.isInitialized()) {
-            alert("카카오톡 SDK가 초기화되지 않았습니다. API 키를 확인해주세요.");
-            return;
-        }
         window.Kakao.Share.sendDefault({
             objectType: "feed",
             content: {
                 title: "서상민 ♥ 백종록 결혼합니다",
                 description: "2026년 4월 5일 11시 30분, 라비두스\n소중한 분들을 초대합니다.",
-                imageUrl:
-                    // 실제 배포된 이미지 URL을 넣어야 가장 잘 나옵니다.
-                    // 현재는 상대 경로로 넣지만, 배포 후에는 절대 경로(https://...)를 권장합니다.
-                    window.location.origin + "/og-image.png",
+                imageUrl: "https://sangminjongrok.cards/og-image.png",
                 link: {
-                    mobileWebUrl: window.location.origin,
-                    webUrl: window.location.origin,
+                    mobileWebUrl: window.location.href,
+                    webUrl: window.location.href,
                 },
             },
             buttons: [
                 {
                     title: "청첩장 보러가기",
                     link: {
-                        mobileWebUrl: window.location.origin,
-                        webUrl: window.location.origin,
+                        mobileWebUrl: window.location.href,
+                        webUrl: window.location.href,
                     },
                 },
             ],
