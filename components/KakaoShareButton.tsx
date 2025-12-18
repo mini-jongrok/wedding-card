@@ -19,6 +19,13 @@ const KakaoShareButton = () => {
             return;
         }
 
+        const currentUrl = window.location.href;
+        const currentOrigin = window.location.origin;
+
+        console.log("[Kakao Share Debug] Attempting to share...");
+        console.log("[Kakao Share Debug] Current Origin (Must be registered in Kakao Console):", currentOrigin);
+        console.log("[Kakao Share Debug] Link URL:", currentUrl);
+
         window.Kakao.Share.sendDefault({
             objectType: "feed",
             content: {
