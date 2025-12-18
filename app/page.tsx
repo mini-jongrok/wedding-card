@@ -8,6 +8,7 @@ import Image from "next/image";
 import background from "@/app/assets/background.png";
 import eggPhoto from "@/app/assets/main_photo_egg.png";
 import KakaoShareButton from "@/components/KakaoShareButton";
+import Guestbook from "@/components/Guestbook";
 
 export default function Home() {
     return (
@@ -57,7 +58,7 @@ export default function Home() {
             </div>
 
             {/* 6. Guestbook Section */}
-            {/* <Guestbook /> */}
+            <Guestbook />
         </main>
     );
 }
