@@ -4,7 +4,12 @@ import { useEffect } from "react";
 
 export default function KakaoScript() {
     useEffect(() => {
+        if (document.getElementById("kakao-sdk")) {
+            return;
+        }
+
         const script = document.createElement("script");
+        script.id = "kakao-sdk";
         script.src = "https://developers.kakao.com/sdk/js/kakao.min.js";
         script.async = true;
 
@@ -25,9 +30,6 @@ export default function KakaoScript() {
 
         document.body.appendChild(script);
 
-        return () => {
-            document.body.removeChild(script);
-        };
     }, []);
 
     return null;
