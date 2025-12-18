@@ -10,7 +10,9 @@ export default function KakaoScript() {
 
         const script = document.createElement("script");
         script.id = "kakao-sdk";
-        script.src = "https://developers.kakao.com/sdk/js/kakao.min.js";
+        script.src = "https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js";
+        script.integrity = "sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2txfDWgyqVyhm1utNCce1a";
+        script.crossOrigin = "anonymous";
         script.async = true;
 
         script.onload = () => {
