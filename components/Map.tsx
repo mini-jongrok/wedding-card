@@ -4,7 +4,7 @@ import eggPhoto from "@/app/assets/main_photo_egg.png";
 
 export default function Map() {
     return (
-        <section className="relative py-20 mt-10 text-center">
+        <section className="relative py-20 text-center">
             {/* Background */}
             <div
                 className="absolute inset-0 -z-10"
