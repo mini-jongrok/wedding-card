@@ -52,15 +52,15 @@ const KakaoShareButton = () => {
     };
 
     return (
-        <div className="flex items-center justify-center gap-3 mx-auto">
+        <div className="flex items-center justify-center gap-2 mx-auto">
             <button
                 onClick={handleShare}
                 aria-label="카카오톡으로 공유하기"
-                className="group relative flex items-center justify-center w-11 h-11 bg-[#FDF5E6] rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-110 active:scale-95"
+                className="group relative flex items-center justify-center w-10 h-10 bg-[#FDF5E6] rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-110 active:scale-95"
             >
                 <svg
-                    width="20"
-                    height="20"
+                    width="18"
+                    height="18"
                     viewBox="0 0 24 24"
                     fill="#3A1D1D"
                     xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ const KakaoShareButton = () => {
                     <path d="M12 3C7.58 3 4 5.79 4 9.24C4 11.22 5.21 12.98 7.15 14.12L6.37 17.06C6.31 17.29 6.57 17.48 6.78 17.34L10.33 14.99C10.87 15.08 11.43 15.13 12 15.13C16.42 15.13 20 12.34 20 8.89C20 5.44 16.42 3 12 3Z" />
                 </svg>
             </button>
-            <span className="text-[#3A1D1D] font-medium text-base" style={{ fontFamily: 'Mapo, serif' }}>
+            <span className="text-[#3A1D1D] font-medium text-sm" style={{ fontFamily: 'Mapo, serif' }}>
                 카카오톡으로 공유하기
             </span>
         </div>

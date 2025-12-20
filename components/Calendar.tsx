@@ -2,13 +2,12 @@
 import Image from 'next/image';
 import calendarImage from '@/app/assets/calendar.png';
 import calendarBackground from '@/app/assets/calendar_background.png';
-import { useEffect, useRef, useState } from 'react';
 
 export default function Calendar() {
     return (
-        <section className="relative w-full py-10 overflow-hidden">
+        <section className="relative w-full py-30 overflow-hidden">
             {/* Section Background Pattern */}
-            <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0">
                 <Image
                     src={calendarBackground}
                     alt="Calendar Section Background"

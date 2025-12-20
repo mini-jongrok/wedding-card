@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import KakaoScript from "@/components/KakaoScript";
 import "./globals.css";
+import Image from "next/image";
+import background from "@/app/assets/background.png";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,8 +55,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSerifKr.variable} font-mapo antialiased`}
       >
-        {children}
-        <KakaoScript />
+        <div className="w-full max-w-[430px] mx-auto min-h-screen shadow-2xl relative overflow-hidden">
+          {/* Main Card Background */}
+          {/* Main Card Background */}
+          <div
+            className="absolute inset-0 -z-50"
+            style={{
+              backgroundImage: `url(${background.src})`,
+              backgroundSize: '100% auto',
+              backgroundRepeat: 'repeat-y',
+              backgroundPosition: 'top center'
+            }}
+          />
+          {children}
+          <KakaoScript />
+        </div>
       </body>
     </html>
   );

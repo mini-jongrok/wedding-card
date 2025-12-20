@@ -18,7 +18,7 @@ import photo13 from "@/assets/gallery/photo_13.jpg";
 import photo14 from "@/assets/gallery/photo_14.jpg";
 import photo15 from "@/assets/gallery/photo_15.jpg";
 import cameraGif from "@/app/assets/camera_photo.gif";
-
+import background from "@/app/assets/background.png";
 import galleryWrapper from "@/app/assets/gallery_wrap_each_photo.png";
 
 const variants = {
@@ -87,7 +87,17 @@ export default function GalleryBottom() {
     };
 
     return (
-        <section className="py-16">
+        <section className="relative py-16">
+            {/* Background */}
+            <div
+                className="absolute inset-0 -z-10"
+                style={{
+                    backgroundImage: `url(${background.src})`,
+                    backgroundSize: '100% auto',
+                    backgroundRepeat: 'repeat-y',
+                    backgroundPosition: 'top center'
+                }}
+            />
             {/* Camera GIF */}
             <div className="flex justify-center mb-4">
                 <Image

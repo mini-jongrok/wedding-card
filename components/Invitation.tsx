@@ -1,10 +1,21 @@
 "use client";
 import Image from "next/image";
+import background from "@/app/assets/background.png";
 import middleSectionComponent from "@/app/assets/middle_section_components.png";
 
 export default function Invitation() {
     return (
         <section className="relative w-full py-20 overflow-hidden">
+            {/* Background */}
+            <div
+                className="absolute inset-0 -z-10"
+                style={{
+                    backgroundImage: `url(${background.src})`,
+                    backgroundSize: '100% auto',
+                    backgroundRepeat: 'repeat-y',
+                    backgroundPosition: 'top center'
+                }}
+            />
             <div className="relative z-10 flex flex-col items-center justify-center p-4 w-full">
                 <div className="relative w-full max-w-xl">
                     {/* Component Image */}

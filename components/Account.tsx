@@ -1,10 +1,23 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import background from "@/app/assets/background.png";
+import KakaoShareButton from "@/components/KakaoShareButton";
 
 export default function Account() {
     return (
-        <section className="py-20 text-center">
+        <section className="relative py-20 text-center">
+            {/* Background */}
+            <div
+                className="absolute inset-0 -z-10"
+                style={{
+                    backgroundImage: `url(${background.src})`,
+                    backgroundSize: '100% auto',
+                    backgroundRepeat: 'repeat-y',
+                    backgroundPosition: 'top center'
+                }}
+            />
             <div className="container mx-auto px-4 max-w-md">
                 <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest" style={{ fontFamily: 'Mapo, serif' }}>
                     마음 전하실 곳
@@ -46,6 +59,12 @@ export default function Account() {
                     </AccountSection>
                 </div>
             </div>
+
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <KakaoShareButton />
         </section>
     );
 }

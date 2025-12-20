@@ -1,7 +1,31 @@
+import Image from "next/image";
+import background from "@/app/assets/background.png";
+import eggPhoto from "@/app/assets/main_photo_egg.png";
+
 export default function Map() {
     return (
-        <section className="py-20 mt-10 text-center">
+        <section className="relative py-20 mt-10 text-center">
+            {/* Background */}
+            <div
+                className="absolute inset-0 -z-10"
+                style={{
+                    backgroundImage: `url(${background.src})`,
+                    backgroundSize: '100% auto',
+                    backgroundRepeat: 'repeat-y',
+                    backgroundPosition: 'top center'
+                }}
+            />
             <div className="container mx-auto px-4">
+                <div className="relative flex justify-center mb-10 transform translate-y-4">
+                    <Image
+                        src={eggPhoto}
+                        alt="Decoration"
+                        width={250}
+                        height={250}
+                        quality={100}
+                        priority
+                    />
+                </div>
                 <h2 className="text-3xl font-bold font-serif text-[#2F4F2F] mb-8 tracking-widest" style={{ fontFamily: 'Mapo, serif' }}>
                     오시는 길
                 </h2>
