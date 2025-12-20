@@ -23,47 +23,58 @@ const KakaoShareButton = () => {
         const currentOrigin = window.location.origin;
 
         console.log("[Kakao Share Debug] Attempting to share...");
-        console.log("[Kakao Share Debug] Current Origin (Must be registered in Kakao Console):", currentOrigin);
-        console.log("[Kakao Share Debug] Link URL:", currentUrl);
+        console.log("[Kakao Share Debug] Current Origin:", currentOrigin);
+        console.log("[Kakao Share Debug] Referrer Policy:", document.referrer || "No Referrer (Check Policy)");
 
-        window.Kakao.Share.sendDefault({
-            objectType: "feed",
-            content: {
+        // Masked Key Check
+        const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_API_KEY || "";
+        const maskedKey = kakaoKey.slice(0, 1) + "****" + kakaoKey.slice(-1);
+        console.log(`[Kakao Share Debug] Using API Key: ${maskedKey} (Ensure this is the JAVASCRIPT KEY)`);
+
+        // Hardcode the verified domain to ensure consistent sharing behavior
+        const shareUrl = "https://sangminjongrok.cards";
+
+        const templateId = Number(process.env.NEXT_PUBLIC_KAKAO_TEMPLATE_ID);
+
+        if (!templateId) {
+            alert("카카오 메시지 템플릿 ID가 설정되지 않았습니다. .env.local 파일을 확인해주세요.");
+            console.error("Missing NEXT_PUBLIC_KAKAO_TEMPLATE_ID");
+            return;
+        }
+
+        console.log("[Kakao Share Debug] Using Template ID:", templateId);
+
+        window.Kakao.Share.sendCustom({
+            templateId: templateId,
+            templateArgs: {
                 title: "서상민 ♥ 백종록 결혼합니다",
                 description: "2026년 4월 5일 11시 30분, 라비두스\n소중한 분들을 초대합니다.",
-                imageUrl: "https://sangminjongrok.cards/og-image.png",
-                link: {
-                    mobileWebUrl: window.location.href,
-                    webUrl: window.location.href,
-                },
+                url: shareUrl,
+                locationUrl: "https://place.map.kakao.com/11135706", // Wedding Hall Kakao Map URL,
+                button2_domain: "https://kko.to",
             },
-            buttons: [
-                {
-                    title: "청첩장 보러가기",
-                    link: {
-                        mobileWebUrl: window.location.href,
-                        webUrl: window.location.href,
-                    },
-                },
-            ],
         });
     };
 
     return (
         <button
             onClick={handleShare}
-            className="bg-white hover:bg-gray-50 text-gray-800 font-semibold py-3 px-8 rounded-full border border-gray-200 shadow-sm transition-all hover:shadow-md active:scale-95 flex items-center gap-2 mx-auto"
+            aria-label="카카오톡으로 공유하기"
+            className="group relative flex items-center justify-center w-14 h-14 bg-[#FFE4E1] rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-110 active:scale-95 mx-auto"
         >
             <svg
-                width="20"
-                height="20"
+                width="28"
+                height="28"
                 viewBox="0 0 24 24"
                 fill="#3A1D1D"
                 xmlns="http://www.w3.org/2000/svg"
+                className="transform transition-transform group-hover:rotate-12"
             >
                 <path d="M12 3C7.58 3 4 5.79 4 9.24C4 11.22 5.21 12.98 7.15 14.12L6.37 17.06C6.31 17.29 6.57 17.48 6.78 17.34L10.33 14.99C10.87 15.08 11.43 15.13 12 15.13C16.42 15.13 20 12.34 20 8.89C20 5.44 16.42 3 12 3Z" />
             </svg>
-            카카오톡 공유하기
+            <span className="absolute -bottom-8 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                카카오톡 공유
+            </span>
         </button>
     );
 };

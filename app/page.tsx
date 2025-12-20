@@ -54,7 +54,7 @@ export default function Home() {
             <Account />
 
             <div className="py-20 flex justify-center">
-                {/* <KakaoShareButton /> */}
+                <KakaoShareButton />
             </div>
 
             {/* 6. Guestbook Section */}

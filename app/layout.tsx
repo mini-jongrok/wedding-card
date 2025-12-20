@@ -22,6 +22,11 @@ const notoSerifKr = Noto_Serif_KR({
 });
 
 export const metadata: Metadata = {
+  referrer: 'same-origin', // recommended for security, but for Kakao 4019 debugging we need at least origin. 
+  // actually Kakao needs domain. 'strict-origin-when-cross-origin' is default in many browsers but let's be explicit
+  other: {
+    "referrer": "strict-origin-when-cross-origin"
+  },
   title: "서상민 ♥ 백종록 결혼합니다",
   description: "2026년 4월 5일 11시 30분, 라비두스",
   openGraph: {

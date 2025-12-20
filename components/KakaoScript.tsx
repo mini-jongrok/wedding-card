@@ -28,6 +28,10 @@ export default function KakaoScript() {
                 }
             }
 
+            console.log("Kakao SDK initialized successfully");
+            // hostname 콘솔 로그에 출력
+            console.log("Hostname:", window.location.hostname);
+
             // Localhost domain warning
             if (window.location.hostname === 'localhost') {
                 console.info(
