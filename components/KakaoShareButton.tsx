@@ -22,14 +22,9 @@ const KakaoShareButton = () => {
         const currentUrl = window.location.href;
         const currentOrigin = window.location.origin;
 
-        console.log("[Kakao Share Debug] Attempting to share...");
-        console.log("[Kakao Share Debug] Current Origin:", currentOrigin);
-        console.log("[Kakao Share Debug] Referrer Policy:", document.referrer || "No Referrer (Check Policy)");
-
         // Masked Key Check
         const kakaoKey = process.env.NEXT_PUBLIC_KAKAO_API_KEY || "";
         const maskedKey = kakaoKey.slice(0, 1) + "****" + kakaoKey.slice(-1);
-        console.log(`[Kakao Share Debug] Using API Key: ${maskedKey} (Ensure this is the JAVASCRIPT KEY)`);
 
         // Hardcode the verified domain to ensure consistent sharing behavior
         const shareUrl = "https://sangminjongrok.cards";
