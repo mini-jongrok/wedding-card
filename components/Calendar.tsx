@@ -1,9 +1,32 @@
 "use client";
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import calendarImage from '@/app/assets/calendar.png';
 import calendarBackground from '@/app/assets/calendar_background.png';
 
 export default function Calendar() {
+    const [dDayText, setDDayText] = useState("");
+
+    useEffect(() => {
+        const today = new Date();
+        const weddingDate = new Date('2026-04-05T00:00:00');
+
+        // Reset time to midnight for accurate day calculation
+        today.setHours(0, 0, 0, 0);
+        weddingDate.setHours(0, 0, 0, 0);
+
+        const diffTime = weddingDate.getTime() - today.getTime();
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays > 0) {
+            setDDayText(`상민과 종록의 결혼식까지 ${diffDays}일 남았습니다`);
+        } else if (diffDays === 0) {
+            setDDayText(`상민과 종록의 결혼식이 오늘입니다!`);
+        } else {
+            setDDayText(`상민과 종록의 결혼식이 지났습니다`);
+        }
+    }, []);
+
     return (
         <section className="relative w-full py-30 overflow-hidden">
             {/* Section Background Pattern */}
@@ -37,7 +60,6 @@ export default function Calendar() {
                         <div className="text-1xl font-bold mb-2 text-[#FFFFFF]" style={{ fontFamily: 'MuseumClassic, serif' }}>
                             April
                         </div>
-                        <br />
                         <br />
 
                         {/* Calendar Grid */}
@@ -105,6 +127,10 @@ export default function Calendar() {
                             </div>
                         </div>
                     </div>
+                </div>
+                {/* Countdown - Placed below the calendar image */}
+                <div className="mt-8 text-center text-[#5A4D4D] animate-fade-in text-lg" style={{ fontFamily: 'Mapo, serif' }}>
+                    {dDayText}
                 </div>
             </div>
         </section >
