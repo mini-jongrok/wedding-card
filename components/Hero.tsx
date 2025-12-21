@@ -1,6 +1,7 @@
 import Image from "next/image";
 import background from "@/app/assets/background.png";
 import mainPhotoComponent from "@/app/assets/main_photo_components.png";
+import FadeInSection from "@/components/FadeInSection";
 
 export default function Hero() {
     return (
@@ -32,14 +33,14 @@ export default function Hero() {
             />
 
             {/* Content Image */}
-            <div className="relative z-10 w-full h-full flex justify-center items-center p-4">
+            <FadeInSection className="relative z-10 w-full h-full flex justify-center items-center p-4">
                 <Image
                     src={mainPhotoComponent}
                     alt="메인 웨딩 사진"
                     className="w-auto h-auto max-w-full max-h-[90vh]"
                     priority
                 />
-            </div>
+            </FadeInSection>
         </section>
     );
 }

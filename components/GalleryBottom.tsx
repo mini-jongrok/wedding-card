@@ -19,6 +19,7 @@ import photo14 from "@/assets/gallery/photo_14.jpg";
 import photo15 from "@/assets/gallery/photo_15.jpg";
 import cameraGif from "@/app/assets/camera_photo.gif";
 import background from "@/app/assets/background.png";
+import FadeInSection from "@/components/FadeInSection";
 
 
 const variants = {
@@ -99,7 +100,7 @@ export default function GalleryBottom() {
                 }}
             />
             {/* Camera GIF */}
-            <div className="flex justify-center mb-4">
+            <FadeInSection className="flex justify-center mb-4">
                 <Image
                     src={cameraGif}
                     alt="Camera Animation"
@@ -107,15 +108,17 @@ export default function GalleryBottom() {
                     height={50}
                     unoptimized
                 />
-            </div>
+            </FadeInSection>
 
             {/* Title */}
-            <h2 className="text-3xl tracking-[0.2em] text-[#2F4F2F] mb-12 font-light select-none text-center" style={{ fontFamily: 'AtSign, cursive' }}>
-                GALLERY
-            </h2>
+            <FadeInSection>
+                <h2 className="text-3xl tracking-[0.2em] text-[#2F4F2F] mb-12 font-light select-none text-center" style={{ fontFamily: 'AtSign, cursive' }}>
+                    GALLERY
+                </h2>
+            </FadeInSection>
 
             {/* Grid Layout */}
-            <div className="grid grid-cols-3 gap-8 container mx-auto max-w-[1000px] px-8">
+            <FadeInSection className="grid grid-cols-3 gap-8 container mx-auto max-w-[1000px] px-8">
                 {images.map((src, i) => {
                     // Unique but deterministic rotation for each image to create a "scattered" feel
                     const rotation = (i % 2 === 0 ? 1 : -1) * ((i % 5) + 1) * 0.8;
@@ -142,7 +145,7 @@ export default function GalleryBottom() {
                         </div>
                     );
                 })}
-            </div>
+            </FadeInSection>
 
             {/* Lightbox */}
             <AnimatePresence>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import background from "@/app/assets/background.png";
 import KakaoShareButton from "@/components/KakaoShareButton";
+import FadeInSection from "@/components/FadeInSection";
 
 export default function Account() {
     return (
@@ -18,7 +19,7 @@ export default function Account() {
                     backgroundPosition: 'top center'
                 }}
             />
-            <div className="container mx-auto px-4 max-w-md">
+            <FadeInSection className="container mx-auto px-4 max-w-md">
                 <h2 className="text-3xl font-serif text-[#2F4F2F] mb-8 tracking-widest" style={{ fontFamily: 'Mapo, serif' }}>
                     마음 전하실 곳
                 </h2>
@@ -58,7 +59,7 @@ export default function Account() {
                         />
                     </AccountSection>
                 </div>
-            </div>
+            </FadeInSection>
 
             <br></br>
             <br></br>

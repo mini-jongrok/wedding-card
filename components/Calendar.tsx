@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import calendarImage from '@/app/assets/calendar.png';
 import calendarBackground from '@/app/assets/calendar_background.png';
+import FadeInSection from "@/components/FadeInSection";
 
 export default function Calendar() {
     const [diffDays, setDiffDays] = useState<number | null>(null);
@@ -33,7 +34,7 @@ export default function Calendar() {
                 />
             </div>
 
-            <div className="relative z-10 flex flex-col items-center justify-center p-4 w-full">
+            <FadeInSection className="relative z-10 flex flex-col items-center justify-center p-4 w-full">
                 <div className="relative w-full max-w-lg">
                     {/* Calendar Background Image */}
                     <Image
@@ -135,7 +136,7 @@ export default function Calendar() {
                         )
                     )}
                 </div>
-            </div>
+            </FadeInSection>
         </section >
     );
 }

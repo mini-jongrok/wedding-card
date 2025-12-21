@@ -1,6 +1,7 @@
 import Image from "next/image";
 import background from "@/app/assets/background.png";
 import eggPhoto from "@/app/assets/main_photo_egg.png";
+import FadeInSection from "@/components/FadeInSection";
 
 export default function Map() {
     return (
@@ -15,7 +16,7 @@ export default function Map() {
                     backgroundPosition: 'top center'
                 }}
             />
-            <div className="container mx-auto px-4">
+            <FadeInSection className="container mx-auto px-4">
                 <div className="relative flex justify-center mb-10 transform translate-y-4">
                     <Image
                         src={eggPhoto}
@@ -91,7 +92,7 @@ export default function Map() {
                         </a>
                     </div>
                 </div>
-            </div>
+            </FadeInSection>
 
         </section>
     );

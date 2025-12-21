@@ -2,6 +2,7 @@
 import Image from "next/image";
 import background from "@/app/assets/background.png";
 import middleSectionComponent from "@/app/assets/middle_section_components.png";
+import FadeInSection from "@/components/FadeInSection";
 
 export default function Invitation() {
     return (
@@ -16,7 +17,7 @@ export default function Invitation() {
                     backgroundPosition: 'top center'
                 }}
             />
-            <div className="relative z-10 flex flex-col items-center justify-center w-full">
+            <FadeInSection className="relative z-10 flex flex-col items-center justify-center w-full">
                 <div className="relative w-[120%] -ml-[5%] max-w-4xl">
                     {/* Component Image */}
                     <Image
@@ -46,7 +47,7 @@ export default function Invitation() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </FadeInSection>
         </section>
     );
 }
