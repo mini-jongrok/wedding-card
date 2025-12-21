@@ -3,6 +3,9 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { Trash2, PenLine, X, Loader2 } from 'lucide-react';
 
+import Image from 'next/image';
+import guestbookBackground from '@/app/assets/guestbook_bg_pattern.png';
+
 interface Comment {
   id: number;
   writer: string;
@@ -137,20 +140,31 @@ export default function Guestbook() {
   };
 
   return (
-    <section className="py-16 px-6 bg-[#f9f9f9] text-center font-sans">
-      <div className="max-w-2xl mx-auto">
+    <section className="relative w-full py-16 px-6 text-center overflow-hidden" style={{ fontFamily: 'Mapo, serif' }}>
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={guestbookBackground}
+          alt="Guestbook Background"
+          fill
+          className="object-cover opacity-50"
+          placeholder="blur"
+        />
+      </div>
+
+      <div className="relative z-10 max-w-2xl mx-auto">
         <h2 className="text-2xl font-bold mb-8 text-gray-800">GUESTBOOK</h2>
         <p className="text-gray-600 mb-8 text-sm">축하의 마음을 남겨주세요</p>
 
         {/* Input Form */}
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-sm mb-10 border border-gray-100">
-          <div className="flex gap-2 mb-3">
+        <form onSubmit={handleSubmit} className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl shadow-lg mb-10 border border-white/50">
+          <div className="flex gap-3 mb-3">
             <input
               type="text"
               placeholder="이름"
               value={writer}
               onChange={(e) => setWriter(e.target.value)}
-              className="w-1/2 p-3 bg-gray-50 rounded-lg text-sm border border-gray-100 focus:outline-none focus:border-gray-300"
+              className="w-1/2 p-4 bg-[#F5F5F5] rounded-xl text-sm font-bold text-[#5A4D4D] border-none focus:ring-2 focus:ring-[#FB7185]/50 placeholder:text-[#9CA3AF] placeholder:font-normal transition-all"
               required
             />
             <input
@@ -158,7 +172,7 @@ export default function Guestbook() {
               placeholder="비밀번호"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-1/2 p-3 bg-gray-50 rounded-lg text-sm border border-gray-100 focus:outline-none focus:border-gray-300"
+              className="w-1/2 p-4 bg-[#F5F5F5] rounded-xl text-sm font-bold text-[#5A4D4D] border-none focus:ring-2 focus:ring-[#FB7185]/50 placeholder:text-[#9CA3AF] placeholder:font-normal transition-all"
               required
             />
           </div>
@@ -167,23 +181,23 @@ export default function Guestbook() {
             value={content}
             onChange={(e) => setContent(e.target.value)}
             maxLength={200}
-            className="w-full p-3 bg-gray-50 rounded-lg text-sm h-24 mb-3 border border-gray-100 focus:outline-none focus:border-gray-300 resize-none"
+            className="w-full p-4 bg-[#F5F5F5] rounded-xl text-sm font-bold text-[#5A4D4D] h-32 mb-4 border-none focus:ring-2 focus:ring-[#FB7185]/50 resize-none placeholder:text-[#9CA3AF] placeholder:font-normal transition-all"
             required
           />
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-gray-800 text-white py-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors disabled:opacity-50 flex justify-center items-center"
+            className="w-full bg-[#FB7185] text-white py-4 rounded-xl text-base font-bold shadow-md hover:bg-[#F43F5E] active:scale-[0.98] transition-all disabled:opacity-50 flex justify-center items-center"
           >
-            {isSubmitting ? <Loader2 className="animate-spin w-4 h-4" /> : '등록하기'}
+            {isSubmitting ? <Loader2 className="animate-spin w-5 h-5" /> : '축하 메시지 남기기'}
           </button>
         </form>
 
         {/* Comments List */}
         {isLoading ? (
-            <div className="flex justify-center py-10">
-                <Loader2 className="animate-spin text-gray-400" />
-            </div>
+          <div className="flex justify-center py-10">
+            <Loader2 className="animate-spin text-gray-400" />
+          </div>
         ) : (
           <div className="space-y-4">
             {comments.map((comment) => (
@@ -196,17 +210,17 @@ export default function Guestbook() {
                 </div>
                 <p className="text-gray-600 text-sm whitespace-pre-wrap leading-relaxed">{comment.content}</p>
                 <div className="flex justify-end gap-3 mt-3">
-                    <button onClick={() => openEditModal(comment)} className="text-gray-400 hover:text-gray-600">
-                        <PenLine size={14} />
-                    </button>
-                    <button onClick={() => openDeleteModal(comment.id)} className="text-gray-400 hover:text-red-500">
-                        <Trash2 size={14} />
-                    </button>
+                  <button onClick={() => openEditModal(comment)} className="text-gray-400 hover:text-gray-600">
+                    <PenLine size={14} />
+                  </button>
+                  <button onClick={() => openDeleteModal(comment.id)} className="text-gray-400 hover:text-red-500">
+                    <Trash2 size={14} />
+                  </button>
                 </div>
               </div>
             ))}
             {comments.length === 0 && (
-                <p className="text-gray-400 text-sm py-10">아직 등록된 메시지가 없습니다.</p>
+              <p className="text-gray-400 text-sm py-10">아직 등록된 메시지가 없습니다.</p>
             )}
           </div>
         )}
@@ -220,17 +234,17 @@ export default function Guestbook() {
               <X size={20} />
             </button>
             <h3 className="text-lg font-bold mb-4 text-gray-800">
-                {actionType === 'DELETE' ? '삭제하기' : '수정하기'}
+              {actionType === 'DELETE' ? '삭제하기' : '수정하기'}
             </h3>
-            
+
             {actionType === 'EDIT' && (
-                <textarea
-                    value={editContent}
-                    onChange={(e) => setEditContent(e.target.value)}
-                    maxLength={200}
-                    className="w-full p-3 bg-gray-50 rounded-lg text-sm h-24 mb-3 border border-gray-100 focus:outline-none focus:border-gray-300 resize-none"
-                    placeholder="수정할 내용을 입력하세요"
-                />
+              <textarea
+                value={editContent}
+                onChange={(e) => setEditContent(e.target.value)}
+                maxLength={200}
+                className="w-full p-3 bg-gray-50 rounded-lg text-sm h-24 mb-3 border border-gray-100 focus:outline-none focus:border-gray-300 resize-none"
+                placeholder="수정할 내용을 입력하세요"
+              />
             )}
 
             <p className="text-sm text-gray-600 mb-3">비밀번호를 입력해주세요.</p>
@@ -242,18 +256,18 @@ export default function Guestbook() {
               className="w-full p-3 bg-gray-50 rounded-lg text-sm border border-gray-100 focus:outline-none focus:border-gray-300 mb-4"
             />
             <div className="flex gap-2">
-                <button 
-                    onClick={resetAction}
-                    className="flex-1 py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200"
-                >
-                    취소
-                </button>
-                <button 
-                    onClick={actionType === 'DELETE' ? handleDelete : handleEdit}
-                    className="flex-1 py-3 bg-gray-800 text-white rounded-lg text-sm font-medium hover:bg-gray-700"
-                >
-                    확인
-                </button>
+              <button
+                onClick={resetAction}
+                className="flex-1 py-3 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200"
+              >
+                취소
+              </button>
+              <button
+                onClick={actionType === 'DELETE' ? handleDelete : handleEdit}
+                className="flex-1 py-3 bg-gray-800 text-white rounded-lg text-sm font-medium hover:bg-gray-700"
+              >
+                확인
+              </button>
             </div>
           </div>
         </div>

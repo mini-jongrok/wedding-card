@@ -19,7 +19,7 @@ import photo14 from "@/assets/gallery/photo_14.jpg";
 import photo15 from "@/assets/gallery/photo_15.jpg";
 import cameraGif from "@/app/assets/camera_photo.gif";
 import background from "@/app/assets/background.png";
-import galleryWrapper from "@/app/assets/gallery_wrap_each_photo.png";
+
 
 const variants = {
     enter: (direction: number) => {
@@ -115,38 +115,33 @@ export default function GalleryBottom() {
             </h2>
 
             {/* Grid Layout */}
-            <div className="grid grid-cols-3 gap-12 container mx-auto max-w-[1000px] px-8">
-                {images.map((src, i) => (
-                    <div
-                        key={i}
-                        onClick={() => openLightbox(i)}
-                        className="relative aspect-[428/720] w-full cursor-pointer hover:scale-105 transition-transform duration-300 rounded-xl overflow-hidden"
-                    >
-                        {/* Wrapper Image (Frame) */}
-                        <div className="absolute inset-0 z-20 pointer-events-none">
-                            <Image
-                                src={galleryWrapper}
-                                alt="Frame"
-                                fill
-                                className="object-fill"
-                            />
-                        </div>
+            <div className="grid grid-cols-3 gap-8 container mx-auto max-w-[1000px] px-8">
+                {images.map((src, i) => {
+                    // Unique but deterministic rotation for each image to create a "scattered" feel
+                    const rotation = (i % 2 === 0 ? 1 : -1) * ((i % 5) + 1) * 0.8;
 
-                        {/* Photo */}
-                        <div className="absolute top-[8%] bottom-[15%] left-[5%] right-[5%] z-10">
-                            <div className="relative w-full h-full overflow-hidden">
+                    return (
+                        <div
+                            key={i}
+                            onClick={() => openLightbox(i)}
+                            style={{ transform: `rotate(${rotation}deg)` }}
+                            className="group bg-gradient-to-br from-white to-gray-50 p-3 pb-12 shadow-xl border border-gray-100 cursor-pointer hover:scale-110 hover:z-10 hover:shadow-2xl transition-all duration-300 w-full ease-out"
+                        >
+                            <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)]">
                                 <Image
                                     src={src}
                                     alt={`Gallery Bottom Photo ${i + 1}`}
                                     fill
-                                    className="object-cover"
+                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                                     placeholder="blur"
                                     sizes="(max-width: 768px) 33vw, 33vw"
                                 />
+                                {/* Glossy overlay effect */}
+                                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 pointer-events-none" />
                             </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
             {/* Lightbox */}
