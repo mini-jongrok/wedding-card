@@ -5,7 +5,7 @@ import calendarImage from '@/app/assets/calendar.png';
 import calendarBackground from '@/app/assets/calendar_background.png';
 
 export default function Calendar() {
-    const [dDayText, setDDayText] = useState("");
+    const [diffDays, setDiffDays] = useState<number | null>(null);
 
     useEffect(() => {
         const today = new Date();
@@ -16,15 +16,8 @@ export default function Calendar() {
         weddingDate.setHours(0, 0, 0, 0);
 
         const diffTime = weddingDate.getTime() - today.getTime();
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-        if (diffDays > 0) {
-            setDDayText(`상민과 종록의 결혼식까지 ${diffDays}일 남았습니다`);
-        } else if (diffDays === 0) {
-            setDDayText(`상민과 종록의 결혼식이 오늘입니다!`);
-        } else {
-            setDDayText(`상민과 종록의 결혼식이 지났습니다`);
-        }
+        const days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        setDiffDays(days);
     }, []);
 
     return (
@@ -130,7 +123,17 @@ export default function Calendar() {
                 </div>
                 {/* Countdown - Placed below the calendar image */}
                 <div className="mt-8 text-center text-[#5A4D4D] animate-fade-in text-lg" style={{ fontFamily: 'Mapo, serif' }}>
-                    {dDayText}
+                    {diffDays !== null && (
+                        diffDays > 0 ? (
+                            <>
+                                상민과 종록의 결혼식까지 <span className="text-[#FB7185] font-bold">{diffDays}일</span> 남았습니다
+                            </>
+                        ) : diffDays === 0 ? (
+                            <>상민과 종록의 결혼식이 오늘입니다!</>
+                        ) : (
+                            <>상민과 종록의 결혼식이 지났습니다</>
+                        )
+                    )}
                 </div>
             </div>
         </section >
