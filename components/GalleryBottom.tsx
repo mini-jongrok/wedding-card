@@ -125,7 +125,7 @@ export default function GalleryBottom() {
                             key={i}
                             onClick={() => openLightbox(i)}
                             style={{ transform: `rotate(${rotation}deg)` }}
-                            className="group bg-gradient-to-br from-white to-gray-50 p-3 pb-12 shadow-xl border border-gray-100 cursor-pointer hover:scale-110 hover:z-10 hover:shadow-2xl transition-all duration-300 w-full ease-out"
+                            className="group bg-gradient-to-br from-white to-gray-50 p-1.5 pb-9 shadow-xl border border-gray-100 cursor-pointer hover:scale-110 hover:z-10 hover:shadow-2xl transition-all duration-300 w-full ease-out"
                         >
                             <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)]">
                                 <Image
