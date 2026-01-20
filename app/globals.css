@@ -71,4 +71,31 @@ body {
   opacity: 0;
   animation: draw-circle 1.5s ease-out forwards;
   /* Slightly longer duration for smoother effect */
+}@keyframes sparkle {
+    0% {
+        transform: translateY(-20px) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(20vh) scale(1);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translateY(80vh) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) scale(0);
+    }
+}
+
+.animate-sparkle {
+    animation-name: sparkle;
+    animation-timing-function: linear;
+    /* or ease-in-out for more floaty feeling */
+    animation-iteration-count: infinite;
 }
